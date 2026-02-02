@@ -60,15 +60,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______,  _______,            _______,  _______),
 };
 
+bool rgb_matrix_indicators_user(void) {
+  // Light up the ESC key if layer 2 is active.
+  if (layer_state & (1 << 2)) {
+    rgb_matrix_set_color(0, 0, 0, 255);
+  }
+  return false;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(1,KC_LSFT):
-            // Layer tap with shift key invokes caps word.
-            if (record->tap.count && record->event.pressed) {
-                caps_word_toggle();
-                return false;        // Return false to ignore further processing of key
-            }
-            break;
+        /* case LT(1,KC_LSFT): */
+        /*     // Layer tap with shift key invokes caps word. */
+        /*     if (record->tap.count && record->event.pressed) { */
+        /*         caps_word_toggle(); */
+        /*         return false;        // Return false to ignore further processing of key */
+        /*     } */
+        /*     break; */
     }
     return true;
 }

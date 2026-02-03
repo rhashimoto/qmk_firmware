@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool rgb_matrix_indicators_user(void) {
   // Light up the ESC key if layer 2 is active.
-  if (layer_state & (1 << 2)) {
+  if (layer_state & (1 << 1)) {
     rgb_matrix_set_color(0, 0, 0, 255);
   }
   return false;

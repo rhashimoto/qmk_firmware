@@ -65,6 +65,11 @@ bool rgb_matrix_indicators_user(void) {
   if (layer_state & (1 << 1)) {
     rgb_matrix_set_color(0, 0, 0, 255);
   }
+
+  // Light up caps lock for caps word.
+  if (is_caps_word_on()) {
+    rgb_matrix_set_color(CAPS_LOCK_LED_INDEX, 255, 0, 0);
+  }
   return false;
 }
 
